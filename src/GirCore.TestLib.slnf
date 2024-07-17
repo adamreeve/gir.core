@@ -10,6 +10,7 @@
       "Libs\\GLib-2.0\\GLib-2.0.csproj",
       "Libs\\GObject-2.0\\GObject-2.0.csproj",
       "Tests\\Generation\\GirLoader.Tests\\GirLoader.Tests.csproj",
+      "Tests\\Generation\\Generator.Tests\\Generator.Tests.csproj",
       "Tests\\Libs\\GirTest-0.1.Tests\\GirTest-0.1.Tests.csproj",
     ]
   }
