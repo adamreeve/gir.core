@@ -10,6 +10,11 @@ internal static class FunctionRenderer
 {
     public static string Render(GirModel.Function? function)
     {
+        return Render(function, forceNewModifier: false);
+    }
+
+    public static string Render(GirModel.Function? function, bool forceNewModifier)
+    {
         if (function is null)
             return string.Empty;
 
@@ -19,7 +24,7 @@ internal static class FunctionRenderer
         try
         {
             var parameters = ParameterToNativeExpression.Initialize(function.Parameters);
-            var newModifier = Function.HidesFunction(function) ? "new " : string.Empty;
+            var newModifier = (forceNewModifier || Function.HidesFunction(function)) ? "new " : string.Empty;
             return @$"
 {VersionAttribute.Render(function.Version)}
 public static {newModifier}{ReturnTypeRenderer.Render(function.ReturnType)} {Function.GetName(function)}({RenderParameters(parameters)})

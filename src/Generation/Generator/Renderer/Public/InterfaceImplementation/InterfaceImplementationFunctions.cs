@@ -22,7 +22,8 @@ namespace {Namespace.GetPublicName(@interface.Namespace)};
 
 public partial class {Interface.GetImplementationName(@interface)} : GObject.GTypeProvider
 {{
-    {FunctionRenderer.Render(@interface.TypeFunction)}
+    // The implementation class also inherits from GObject.Object so GetType needs the new modifier
+    {FunctionRenderer.Render(@interface.TypeFunction, forceNewModifier: true)}
 
     {@interface.Functions
         .Select(FunctionRenderer.Render)
